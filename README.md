@@ -1,7 +1,7 @@
 Welcome to Naufal Rizki Septianto's demo.
 
-To user this:
-1. Make sure to run SQL Server query script (creating database and some tables) attached in this repository.
+To use this:
+1. Make sure to run SQL Server query script (TestDemo.sql) (creating database and some tables) attached in this repository.
 2. Check the newest executed database's TCP/IP connection and of course, its SQL Server Browser connection for JDBC connection.
 3. Open this project then check "application.properties"
 4. Setting up username and password for database connection properties.
