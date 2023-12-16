@@ -1,0 +1,71 @@
+package org.project.dao.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.project.dao.CompanyDao;
+import org.project.entity.CompanyEntity;
+import org.project.entity.UserEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CompanyDaoImpl implements CompanyDao {
+
+	private final JdbcTemplate jdbcTemplate;
+	
+	public CompanyDaoImpl(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	@Override
+	public List<CompanyEntity> findAll() {
+		String sql = "";
+		List<CompanyEntity> queryResult = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(CompanyEntity.class));
+		
+		if (queryResult.size() != 0) {
+			return queryResult;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public CompanyEntity findById(int id) {
+		String sql = "";
+		List<CompanyEntity> queryResult = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(CompanyEntity.class), id);
+		
+		Optional<CompanyEntity> findCompany = queryResult.stream()
+				.filter(company -> id == company.getCompanyId())
+				.findFirst();
+		return findCompany.orElse(null);
+	}
+
+	@Override
+	public void save(CompanyEntity company) {
+		companyList.add(company);
+	}
+
+	@Override
+	public CompanyEntity update(int id, CompanyEntity company) {
+		for (CompanyEntity list : companyList) {
+			if (id == list.getCompanyId()) {
+				list.setCompanyName(company.getCompanyName());
+				list.setCompanyAddress(company.getCompanyAddress());
+				list.setCompanyIndustry(company.getCompanyIndustry());
+				return list;
+			} else {
+				return null;
+			}
+		}
+		return company;
+	}
+
+	@Override
+	public void delete(int id) {
+		companyList.removeIf(company -> id == company.getCompanyId());
+	}
+
+}

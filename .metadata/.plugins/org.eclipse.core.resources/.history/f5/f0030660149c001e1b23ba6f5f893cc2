@@ -1,0 +1,56 @@
+package org.project.dto;
+
+import org.project.entity.CompanyEntity;
+
+public class CompanyDto extends CompanyEntity{
+
+	private int companyId;
+	private String companyName;
+	private String companyAddress;
+	private int industryId;
+	
+	public CompanyDto() {
+		
+	}
+	
+	public CompanyDto(int companyId, String companyName, String companyAddress, int industryId) {
+		this.companyId = companyId;
+		this.companyName = companyName;
+		this.companyAddress = companyAddress;
+		this.industryId = industryId;
+	}
+
+	// 	GETTER-SETTER
+	@Override
+	public int getCompanyId() {
+		return companyId;
+	}
+	@Override
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
+	@Override
+	public String getCompanyName() {
+		return companyName;
+	}
+	@Override
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+	@Override
+	public String getCompanyAddress() {
+		return companyAddress;
+	}
+	@Override
+	public void setCompanyAddress(String companyAddress) {
+		this.companyAddress = companyAddress;
+	}
+	@Override
+	public int getIndustryId() {
+		return industryId;
+	}
+	@Override
+	public void setIndustryId(int industryId) {
+		this.industryId = industryId;
+	}
+}

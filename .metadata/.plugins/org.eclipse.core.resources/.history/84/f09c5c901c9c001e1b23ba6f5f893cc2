@@ -1,0 +1,49 @@
+package org.project.dao.impl;
+
+import java.util.List;
+
+import org.project.dao.IndustryDao;
+import org.project.entity.IndustryEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class IndustryDaoImpl implements IndustryDao {
+
+	private JdbcTemplate jdbcTemplate;
+	
+	public IndustryDaoImpl(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	@Override
+	public List<IndustryEntity> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IndustryEntity findById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IndustryEntity save(IndustryEntity industry) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IndustryEntity update(Long id, IndustryEntity industry) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

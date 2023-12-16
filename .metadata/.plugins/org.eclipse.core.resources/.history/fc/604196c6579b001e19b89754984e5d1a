@@ -1,0 +1,39 @@
+package org.project.dao.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.project.dao.CompanyDao;
+import org.project.entity.CompanyEntity;
+
+@Repository
+public class CompanyDaoImpl implements CompanyDao {
+
+	private final List<CompanyEntity> companyList = new ArrayList<>();
+	
+	@Override
+	public List<CompanyEntity> findAll() {
+		return companyList;
+	}
+
+	@Override
+	public CompanyEntity findById(int id) {
+		return null;
+	}
+
+	@Override
+	public void save(CompanyEntity company) {
+		
+	}
+
+	@Override
+	public CompanyEntity update(int id, CompanyEntity company) {
+		return null;
+	}
+
+	@Override
+	public void delete(int id) {
+		
+	}
+
+}

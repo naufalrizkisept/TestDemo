@@ -1,0 +1,47 @@
+package org.project.service.impl;
+
+import java.util.List;
+
+import org.project.dao.IndustryDao;
+import org.project.dto.IndustryDto;
+import org.project.service.IndustrySvc;
+
+public class IndustrySvcImpl implements IndustrySvc {
+
+	private final IndustryDao industryDao;
+	
+	public IndustrySvcImpl(IndustryDao industryDao) {
+		this.industryDao = industryDao;
+	}
+	
+	@Override
+	public List<IndustryDto> getAllIndustries() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IndustryDto getIndustryById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IndustryDto saveIndustry(IndustryDto industry) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IndustryDto updateIndustry(Long id, IndustryDto industry) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteIndustry(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

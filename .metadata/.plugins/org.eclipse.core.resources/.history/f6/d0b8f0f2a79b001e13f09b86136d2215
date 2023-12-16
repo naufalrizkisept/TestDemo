@@ -1,0 +1,65 @@
+package org.project.dao.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.project.dao.UserDao;
+import org.project.entity.UserEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class UserDaoImpl implements UserDao {
+
+	private final JdbcTemplate jdbcTemplate;
+	
+	public UserDaoImpl(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	@Override
+	public List<UserEntity> findAll() {
+		String sql = "";
+		List<UserEntity> queryResult = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(UserEntity.class));
+		
+		if (queryResult.size() != 0) {
+			return queryResult;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public UserEntity findById(int id) {
+		String sql = "";
+		List<UserEntity> queryResult = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(UserEntity.class), id);
+		Optional<UserEntity> findUser = queryResult.stream()
+				.filter(user -> id == user.getUserId())
+				.findFirst();
+		
+		return findUser.orElse(null);
+	}
+
+	@Override
+	public UserEntity save(UserEntity user) {
+		String sql = "";
+		jdbcTemplate.update(sql, user.getUserId(), user.getUserName(), user.getUserEmail(), user.getUserJob(), user.getCompanyId());
+		return user;
+	}
+
+	@Override
+	public UserEntity update(int id, UserEntity user) {
+		String sql = "";
+		jdbcTemplate.update(sql, user.getUserName(), user.getUserEmail(), user.getUserJob(), user.getCompanyId(), id);
+		return user;
+	}
+
+	@Override
+	public void delete(int id) {
+		String sql = "";
+		jdbcTemplate.update(sql, id);
+	}
+
+}

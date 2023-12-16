@@ -1,0 +1,54 @@
+package org.project.dao.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.project.dao.CompanyDao;
+import org.project.entity.CompanyEntity;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CompanyDaoImpl implements CompanyDao {
+
+	private final List<CompanyEntity> companyList = new ArrayList<>();
+	
+	@Override
+	public List<CompanyEntity> findAll() {
+		return companyList;
+	}
+
+	@Override
+	public CompanyEntity findById(int id) {
+		Optional<CompanyEntity> findCompany = companyList.stream()
+				.filter(company -> id == company.getCompanyId())
+				.findFirst();
+		return findCompany.orElse(null);
+	}
+
+	@Override
+	public void save(CompanyEntity company) {
+		companyList.add(company);
+	}
+
+	@Override
+	public CompanyEntity update(int id, CompanyEntity company) {
+		for (CompanyEntity list : companyList) {
+			if (id == list.getCompanyId()) {
+				list.setCompanyName(company.getCompanyName());
+				list.setCompanyAddress(company.getCompanyAddress());
+				list.setCompanyIndustry(company.getCompanyIndustry());
+				return list;
+			} else {
+				return null;
+			}
+		}
+		return company;
+	}
+
+	@Override
+	public void delete(int id) {
+		
+	}
+
+}

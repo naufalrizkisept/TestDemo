@@ -1,0 +1,4 @@
+spring.datasource.url=jdbc:sqlserver://NAUFALRIZKISEPT\\MSSQLSERVER01;databaseName=demoDB;integratedSecurity=true;encrypt=true;trustServerCertificate=true;
+spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+#server.port=8082

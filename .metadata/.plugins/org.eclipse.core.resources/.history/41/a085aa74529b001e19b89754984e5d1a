@@ -1,0 +1,55 @@
+package org.project.entity;
+
+public class CompanyEntity {
+	
+	private int companyId;
+	private String companyName;
+	private String companyAddress;
+	private String companyIndustry;
+
+	public CompanyEntity() {
+		
+	}
+	
+	public CompanyEntity(int companyId, String companyName, String companyAddress, String companyIndustry) {
+		this.companyId = companyId;
+		this.companyName = companyName;
+		this.companyAddress = companyAddress;
+		this.companyIndustry = companyIndustry;
+	}
+
+	// GETTER-SETTER
+	public int getCompanyId() {
+		return companyId;
+	}
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
+	public String getCompanyName() {
+		return companyName;
+	}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+	public String getCompanyAddress() {
+		return companyAddress;
+	}
+	public void setCompanyAddress(String companyAddress) {
+		this.companyAddress = companyAddress;
+	}
+	public String getCompanyIndustry() {
+		return companyIndustry;
+	}
+	public void setCompanyIndustry(String companyIndustry) {
+		this.companyIndustry = companyIndustry;
+	}
+
+	// FOR TESTING QUERY
+	@Override
+	public String toString() {
+		return "CompanyEntity [companyId=" + companyId + ", companyName=" + companyName + ", companyAddress="
+				+ companyAddress + ", companyIndustry=" + companyIndustry + "]";
+	}
+	
+	
+}

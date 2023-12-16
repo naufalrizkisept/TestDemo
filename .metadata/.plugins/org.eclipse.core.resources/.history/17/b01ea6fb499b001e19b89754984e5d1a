@@ -1,0 +1,2 @@
+spring.datasource.url=jdbc:sqlserver://NAUFALRIZKISEPT\\MSSQLSERVER01;databaseName=demoDB
+server.port=8082

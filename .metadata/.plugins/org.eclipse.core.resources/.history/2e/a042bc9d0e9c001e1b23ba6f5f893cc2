@@ -1,0 +1,81 @@
+package org.project.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.project.dao.UserDao;
+import org.project.dto.UserDto;
+import org.project.entity.UserEntity;
+import org.project.service.UserSvc;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserSvcImpl implements UserSvc {
+	
+	private final UserDao userDao;
+	
+	public UserSvcImpl(UserDao userDao) {
+		this.userDao = userDao;
+	}
+	
+	private UserDto convertToDto(UserEntity user) {
+		UserDto dto = new UserDto();
+		dto.setUserId(user.getUserId());
+		dto.setUserName(user.getUserName());
+		dto.setUserEmail(user.getUserEmail());
+		dto.setUserJob(user.getUserJob());
+		dto.setCompanyId(user.getCompanyId());
+		return dto;
+	}
+
+	@Override
+	public List<UserDto> getAllUsers() {
+		List<UserDto> allUsers = new ArrayList<>();
+		allUsers = userDao.findAll().stream()
+				.map(this::convertToDto)
+				.collect(Collectors.toList());
+		
+		return allUsers;
+	}
+
+	@Override
+	public UserDto getUserById(int id) {
+		UserEntity user = userDao.findById(id);
+		return (user != null) ? convertToDto(user) : null;
+	}
+
+
+	@Override
+	public UserDto saveUser(UserDto user) {
+		UserEntity newUser = new UserEntity();
+		newUser.setUserId(user.getUserId());
+		newUser.setUserName(user.getUserName());
+		newUser.setUserEmail(user.getUserEmail());
+		newUser.setUserJob(user.getUserJob());
+		newUser.setCompanyId(user.getCompanyId());
+		
+		userDao.save(newUser);
+		
+		return convertToDto(newUser);
+	}
+
+	@Override
+	public UserDto updateUser(int id, UserDto user) {
+		UserEntity updatedUser = new UserEntity();
+		updatedUser = userDao.findById(id);
+		
+		if (updatedUser.getUserId() == user.getUserId()) {
+			userDao.update(id, user);
+		}
+		
+		return convertToDto(updatedUser);
+	}
+
+	@Override
+	public void deleteUser(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

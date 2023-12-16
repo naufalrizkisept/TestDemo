@@ -1,0 +1,8 @@
+package org.project.controller;
+
+@RestController
+@RequestMapping("/company")
+public class CompanyController {
+
+	private final CompanySvc companySvc;
+}

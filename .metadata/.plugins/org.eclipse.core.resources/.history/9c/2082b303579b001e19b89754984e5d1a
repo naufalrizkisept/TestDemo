@@ -1,0 +1,55 @@
+package org.project.dao.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.project.dao.UserDao;
+import org.project.entity.UserEntity;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class UserDaoImpl implements UserDao {
+
+	private final List<UserEntity> userList = new ArrayList<>();
+	
+	@Override
+	public List<UserEntity> findAll() {
+		return userList;
+	}
+
+	@Override
+	public UserEntity findById(int id) {
+		Optional<UserEntity> findUser = userList.stream()
+				.filter(userList -> id == userList.getUserId())
+				.findFirst();
+		return findUser.orElse(null);
+	}
+
+	@Override
+	public void save(UserEntity user) {
+		userList.add(user);
+	}
+
+	@Override
+	public UserEntity update(int id, UserEntity user) {
+		for (UserEntity list : userList) {
+			if (list.getUserId() == id) {
+				list.setUserName(user.getUserName());
+				list.setUserEmail(user.getUserEmail());
+				list.setUserJob(user.getUserJob());
+				list.setCompanyId(user.getCompanyId());
+				return list;
+			} else {
+				return null;
+			}
+		}
+		return user;
+	}
+
+	@Override
+	public void delete(int id) {
+		userList.removeIf(user -> id == user.getUserId());
+	}
+
+}

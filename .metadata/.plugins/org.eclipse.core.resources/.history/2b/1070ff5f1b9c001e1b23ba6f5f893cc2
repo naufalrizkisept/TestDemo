@@ -1,0 +1,21 @@
+package org.project.dto;
+
+import org.project.entity.IndustryEntity;
+
+public class IndustryDto extends IndustryEntity {
+	
+	private Long industryId;
+	private String industryName;
+	private String industryDesc;
+	
+	public IndustryDto() {
+		
+	}
+
+	public IndustryDto(Long industryId, String industryName, String industryDesc) {
+		this.industryId = industryId;
+		this.industryName = industryName;
+		this.industryDesc = industryDesc;
+	}
+	
+}

@@ -1,0 +1,59 @@
+package org.project.service.impl;
+
+import java.util.List;
+
+import org.project.dao.CompanyDao;
+import org.project.dto.CompanyDto;
+import org.project.entity.CompanyEntity;
+import org.project.service.CompanySvc;
+
+public class CompanySvcImpl implements CompanySvc {
+
+	private final CompanyDao companyDao;
+	
+	public CompanySvcImpl(CompanyDao companyDao) {
+		this.companyDao = companyDao;
+	}
+	
+	private CompanyDto convertToDto(CompanyEntity company) {
+		CompanyDto dto = new CompanyDto();
+		dto.setCompanyId(company.getCompanyId());
+		dto.setCompanyName(company.getCompanyName());
+		dto.setCompanyAddress(company.getCompanyAddress());
+		dto.setIndustryId(company.getIndustryId());
+		return dto;
+	}
+	
+	@Override
+	public List<CompanyDto> getAllCompanies() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CompanyDto getCompanyById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CompanyDto saveCompany(CompanyDto company) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CompanyDto updateCompany(CompanyDto company) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteCompany(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

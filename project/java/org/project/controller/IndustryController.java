@@ -1,0 +1,68 @@
+package org.project.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.project.dto.IndustryDto;
+import org.project.service.IndustrySvc;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/industry")
+public class IndustryController {
+
+	@Autowired
+	private final IndustrySvc industrySvc;
+	
+	public IndustryController(IndustrySvc industrySvc) {
+		this.industrySvc = industrySvc;
+	}
+	
+	@GetMapping("/all")
+	public ResponseEntity<List<IndustryDto>> getAllIndustries() {
+		List<IndustryDto> industries = new ArrayList<>();
+		industries = industrySvc.getAllIndustries();
+		
+		return new ResponseEntity<>(industries, HttpStatus.OK);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<IndustryDto> getIndustryById(@PathVariable("id") Long id) {
+		IndustryDto industry = new IndustryDto();
+		industry = industrySvc.getIndustryById(id);
+		
+		return (industry != null) ? new ResponseEntity<>(industry, HttpStatus.OK) : new ResponseEntity<>(industry, HttpStatus.NOT_FOUND);
+	}
+	
+	@PostMapping("/save")
+	public ResponseEntity<IndustryDto> saveIndustry(@RequestBody IndustryDto industry) {
+		IndustryDto newIndustry = new IndustryDto();
+		newIndustry = industrySvc.saveIndustry(industry);
+		
+		return new ResponseEntity<>(newIndustry, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/update/{id}")
+	public ResponseEntity<IndustryDto> updateIndustry(@PathVariable("id") Long id, @RequestBody IndustryDto industry) {
+		IndustryDto updatedIndustry = new IndustryDto();
+		updatedIndustry = industrySvc.updateIndustry(id, industry);
+		
+		return (updatedIndustry != null) ? new ResponseEntity<>(updatedIndustry, HttpStatus.OK) : new ResponseEntity<>(updatedIndustry, HttpStatus.NOT_FOUND);
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Void> deleteIndustry(@PathVariable("id") Long id) {
+		industrySvc.deleteIndustry(id);
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+}

@@ -1,0 +1,1 @@
+spring.datasource.url=jdbc:sqlserver://naufalrizkisept\\mssqlserver01;databaseName=demoDB;

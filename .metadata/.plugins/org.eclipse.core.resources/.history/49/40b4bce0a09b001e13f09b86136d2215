@@ -1,0 +1,16 @@
+package org.project.dao;
+
+import java.util.List;
+
+import org.project.entity.UserEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserDao extends JpaRepository<UserEntity, Integer> {
+
+	
+	List<UserEntity> findAll();
+	UserEntity findById(int id);
+	UserEntity save(UserEntity user);
+	UserEntity update(int id, UserEntity user);
+	void delete(int id);
+}

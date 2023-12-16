@@ -1,0 +1,62 @@
+package org.project.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.project.dao.IndustryDao;
+import org.project.dto.IndustryDto;
+import org.project.entity.IndustryEntity;
+import org.project.service.IndustrySvc;
+
+public class IndustrySvcImpl implements IndustrySvc {
+
+	private final IndustryDao industryDao;
+	
+	public IndustrySvcImpl(IndustryDao industryDao) {
+		this.industryDao = industryDao;
+	}
+	
+	private IndustryDto convertToDto(IndustryEntity industry) {
+		IndustryDto dto = new IndustryDto();
+		dto.setIndustryId(industry.getIndustryId());
+		dto.setIndustryName(industry.getIndustryName());
+		dto.setIndustryDesc(industry.getIndustryDesc());
+		return dto;
+	}
+	
+	@Override
+	public List<IndustryDto> getAllIndustries() {
+		List<IndustryDto> allIndustries = new ArrayList<>();
+		allIndustries = industryDao.findAll().stream()
+				.map(this::convertToDto)
+				.collect(Collectors.toList());
+		
+		return allIndustries;
+	}
+
+	@Override
+	public IndustryDto getIndustryById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IndustryDto saveIndustry(IndustryDto industry) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IndustryDto updateIndustry(Long id, IndustryDto industry) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteIndustry(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

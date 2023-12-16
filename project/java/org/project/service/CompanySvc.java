@@ -1,0 +1,13 @@
+package org.project.service;
+
+import java.util.List;
+
+import org.project.dto.CompanyDto;
+
+public interface CompanySvc {
+	List<CompanyDto> getAllCompanies();
+	CompanyDto getCompanyById(Long id);
+	CompanyDto saveCompany(CompanyDto company);
+	CompanyDto updateCompany(Long id, CompanyDto company);
+	void deleteCompany(Long id);
+}

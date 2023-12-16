@@ -1,0 +1,49 @@
+package org.project.service.impl;
+
+import java.util.List;
+
+import org.project.dao.UserDao;
+import org.project.dto.UserDto;
+import org.project.service.UserSvc;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserSvcImpl implements UserSvc {
+	
+	private final UserDao userDao;
+	
+	public UserSvcImpl(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	@Override
+	public List<UserDto> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserDto getUserById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserDto saveUser(UserDto user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserDto updateUser(int id, UserDto user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteUser(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
